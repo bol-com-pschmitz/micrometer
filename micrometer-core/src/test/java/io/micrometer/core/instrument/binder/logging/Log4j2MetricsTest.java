@@ -171,7 +171,9 @@ class Log4j2MetricsTest {
 
         assertThat(registry.get("log4j2.events").tags("level", "info").counter().count()).isEqualTo(0);
         logger.info("Hello, world!");
-        assertThat(registry.get("log4j2.events").tags("level", "info").counter().count()).isEqualTo(1);
+        logger.info("Hello, world!");
+        logger.info("Hello, world!");
+        assertThat(registry.get("log4j2.events").tags("level", "info").counter().count()).isEqualTo(3);
     }
 
 }
